@@ -22,6 +22,8 @@
     "@angular/ssr": "^22.2.3",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
+    "todomvc-app-css": "^2.4.3",
+    "todomvc-common": "^1.0.5",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

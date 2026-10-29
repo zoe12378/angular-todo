@@ -1,0 +1,10 @@
+/* 【新增】完成的待辦事項加上刪除線 */
+.todo-list li.completed label {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* 【新增】完成的待辦事項縮小文字 */
+.todo-list li.smallText label {
+  font-size: 14px;
+}
