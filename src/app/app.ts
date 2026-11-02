@@ -2,13 +2,12 @@ import { Component, OnInit, signal, ChangeDetectorRef } from '@angular/core';
 import {Todo, TodoStatusType} from './@models/todo.model';
 import { FormsModule } from '@angular/forms';
 import { TodoService } from './@services/todo';
-import { Hello } from './hello/hello';
 
 @Component({
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
-  imports: [FormsModule,Hello],
+  imports: [FormsModule],
 })
 export class App{
   protected readonly title = signal('OneTodo');
