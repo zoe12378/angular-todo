@@ -14,15 +14,14 @@
 
 ![OneTodo 主畫面](./public/todo-preview-1.png)
 
+
 ### 功能展示
 
-| 展示畫面一 | 展示畫面二 |
-|---|---|
+| **展示畫面一：勾選後文字樣式變更** | **展示畫面二：點選下方 Active** |
+|:---:|:---:|
 | ![OneTodo 展示畫面 2](./public/todo-preview-2.png) | ![OneTodo 展示畫面 3](./public/todo-preview-3.png) |
-
-### 其他操作畫面
-
-![OneTodo 展示畫面 4](./public/todo-preview-4.png)
+| **展示畫面三：點選下方 Completed** | |
+| ![OneTodo 展示畫面 4](./public/todo-preview-4.png) | |
 
 ---
 
