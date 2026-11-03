@@ -1,62 +1,23 @@
 <section class="todoapp">
 	<header class="header">
-		<h1>{{title()}}</h1>
-		<input class="new-todo" 
-		#todoInput 
-		[(ngModel)] = "todoInputModel"
-		(keyup.enter) = "add()" 
-		[placeholder]="placeholder()" 
-		autofocus>
+		<app-header [title]="title" [todoDataList]="todoDataList"></app-header>
 	</header>
 	<section class="main">
-		<input id="toggle-all" class="toggle-all" type="checkbox" 
-		[checked] = "toggleAllBtn" (change) = "toggleAll()">
-		<label for="toggle-all">Mark all as complete</label>
-		<ul class="todo-list">
-			@for (item of nowTodoList; track $index) { 
-			<li [class.completed]="item.Status" [class.editing]="item.Editing">
-				<div class="view">
-					<input class="toggle" type="checkbox"
-					[checked] = "item.Status" (change) = "clickCheck(item)">
-					<label (dblclick) = "edit(item)">{{item.Thing}}</label>
-					<button (click) = "delete(item)" class = "destroy"></button>
-				</div>
-				@if (item.Editing) {
-					<input 
-					#itemInput 
-					[(ngModel)] = "item.Thing"
-					(keyup.enter) = 'update(item)'
-					(blur) = "update(item)"
-					(mouseenter) = "itemInput.focus()"
-					class = "edit" />
-				}
-			</li>
-			}
-		</ul>
+		<app-section 
+			(onDeleteItem)="delete($event)"
+			[nowTodoList]="nowTodoList" 
+			[todoDataList]="todoDataList" 
+			[todoCompleted]="todoCompleted">
+		</app-section>
 	</section>
 	<footer class="footer" style = "display: block;">
-		<span class="todo-count"><strong>{{todoActive.length}}</strong> items left</span>
-		<ul class="filters">
-			<li>
-				<a [class.selected] = "nowTodoStatusType === TodoStatusType.All" 
-				(click) = "setTodoStatusType(TodoStatusType.All)"
-				href="#/" >All</a>
-			</li>
-			<li>
-				<a [class.selected] = "nowTodoStatusType === TodoStatusType.Active" 
-				(click) = "setTodoStatusType(TodoStatusType.Active)"
-				href="#/active">Active</a>
-			</li>
-			<li>
-				<a [class.selected] = "nowTodoStatusType === TodoStatusType.Completed" 
-				(click) = "setTodoStatusType(TodoStatusType.Completed)"
-				href="#/completed">Completed</a>
-			</li>
-		</ul>
-		@if (todoCompleted.length > 0) {
-			<button class="clear-completed"
-			(click) = "clearcompleted()"
-			>Clear completed</button>
-		}
+		<app-footer 
+			(onClearCompleted)="clear()"
+			(onStatusTypeChange)="statusTypeChange($event)"
+			[todoActive]="todoActive" 
+			[todoCompleted]="todoCompleted" 
+			[todoDataList]="todoDataList">
+			[nowTodoStatusType]="nowTodoStatusType"
+		</app-footer>
 	</footer>
 </section>

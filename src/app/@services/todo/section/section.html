@@ -1,0 +1,24 @@
+<input id="toggle-all" class="toggle-all" type="checkbox" 
+	[checked] = "toggleAllBtn" (change) = "toggleAll()">
+	<label for="toggle-all">Mark all as complete</label>
+	<ul class="todo-list">
+		@for (item of nowTodoList; track $index) { 
+		    <li [class.completed]="item.Status" [class.editing]="item.Editing">
+				<div class="view">
+					<input class="toggle" type="checkbox"
+					[checked] = "item.Status" (change) = "clickCheck(item)">
+					<label (dblclick) = "edit(item)">{{item.Thing}}</label>
+					<button (click) = "delete(item)" class = "destroy"></button>
+				</div>
+				@if (item.Editing) {
+					<input 
+					#itemInput 
+					[(ngModel)] = "item.Thing"
+					(keyup.enter) = 'update(item)'
+					(blur) = "update(item)"
+					(mouseenter) = "itemInput.focus()"
+					class = "edit" />
+				}
+			</li>
+		}
+	</ul>
